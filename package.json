@@ -1,0 +1,29 @@
+{
+  "name": "durak",
+  "version": "0.1.0",
+  "description": "Durak card game using electron",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KaiSforza/durak.git"
+  },
+  "keywords": [
+    "durak",
+    "cards",
+    "electron"
+  ],
+  "author": "Alex Giokas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KaiSforza/durak/issues"
+  },
+  "homepage": "https://github.com/KaiSforza/durak#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^10.1.2",
+    "typescript": "^4.0.3"
+  }
+}

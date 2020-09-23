@@ -4,7 +4,7 @@
   "description": "Durak card game using electron",
   "main": "dist/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no tests created yet\"",
     "start": "electron ."
   },
   "repository": {
@@ -17,6 +17,17 @@
     "electron"
   ],
   "author": "Alex Giokas",
+  "contributors": [
+    {
+      "name": "Kai Giokas",
+      "email": "kai@kaictl.me",
+      "url": "https://github.com/KaiSforza"
+    },
+    {
+      "name": "Panda",
+      "url": "https://github.com/pnda07"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/KaiSforza/durak/issues"

@@ -20,5 +20,7 @@ Running the application:
   - Install Node
   - Run the following commands in the project directory:
     > npm install
+
     > npx tsc 
+    
     > npm start

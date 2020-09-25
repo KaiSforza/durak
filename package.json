@@ -2,9 +2,10 @@
   "name": "durak",
   "version": "0.1.0",
   "description": "Durak card game using electron",
-  "main": "main.js",
+  "main": "dist/main.js",
   "scripts": {
-    "test": "echo \"Error: no tests created yet\""
+    "test": "echo \"Error: no tests created yet\"",
+    "start": "electron ."
   },
   "repository": {
     "type": "git",

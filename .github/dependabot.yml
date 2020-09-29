@@ -11,6 +11,10 @@ updates:
       interval: "daily"
     reviewers:
       - "KaiSforza"
+    assignees:
+      - "KaiSforza"
+    commit-message: 
+      - prefix: "gh-act"
   - package-ecosystem: "npm" # See documentation for possible values
     directory: "/" # Location of package manifests
     schedule:
@@ -18,3 +22,8 @@ updates:
     reviewers:
       - "KaiSforza"
       - "algiokas"
+    assignees:
+      - "KaiSforza"
+      - "algiokas"
+    commit-message:
+      - prefix: "npm"

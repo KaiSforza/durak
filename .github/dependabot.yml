@@ -14,7 +14,7 @@ updates:
     assignees:
       - "KaiSforza"
     commit-message: 
-      - prefix: "gh-act"
+      prefix: "gh-act"
   - package-ecosystem: "npm" # See documentation for possible values
     directory: "/" # Location of package manifests
     schedule:
@@ -26,4 +26,4 @@ updates:
       - "KaiSforza"
       - "algiokas"
     commit-message:
-      - prefix: "npm"
+      prefix: "npm"

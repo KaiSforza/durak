@@ -52,7 +52,7 @@ class Deck {
                 c.push({rank: r, suit: s})
             }
         }
-
+        this.deck = c
         return this.deck
     }
 
@@ -66,21 +66,25 @@ class Deck {
 
     deal(players: number): Card[][] {
         let cards: Card[][] = []
-        let totalCards: number = this.deck.length
         for (let p = 0; p < players; p++) {
             cards.push([])
             for(let c = 0; c < 6; c++) {
                 cards[p].push(this.draw())
             }
         }
+        this.hands = cards
         return cards
     }
 
     finalDraw(): Card {
         let c: Card = this.draw()
+        this.trumpCard = c
         return c
     }
 }
 
 let newdeck = new Deck(4)
+console.log(newdeck.deck)
 console.log(newdeck.hands)
+console.log(newdeck.trumpCard)
+console.log(`Total Cards: ${newdeck.deck.length + newdeck.hands.length * 6 + 1}`)

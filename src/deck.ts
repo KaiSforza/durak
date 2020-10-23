@@ -2,7 +2,7 @@ type Suit = "spades" | "hearts" | "diamonds" | "clubs"
 
 type Rank = 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14
 
-type ordering = 1 | 0 | -1
+type ordering = number
             // GT | EQ| LT
 
 interface Card {
@@ -11,11 +11,7 @@ interface Card {
 }
 
 function cardCompare(card1: Card, card2: Card): ordering {
-    if (card1.rank > card2.rank) {
-        return 1
-    } else if (card1.rank < card2.rank) {
-        return -1
-    } else return 0
+    return card1.rank - card2.rank
 }
 
 function cardCompareTrump(card1: Card, card2: Card, trump: Suit = "spades"): ordering {

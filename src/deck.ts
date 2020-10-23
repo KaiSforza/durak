@@ -28,16 +28,18 @@ class Deck {
     hands: Card[][]
     trumpCard: Card
     trump: Suit
+    drawBelow: number
     finalTrumpLeft: boolean
 
-    constructor(players: number, startingCard: Rank = 6) {
+    constructor(players: number, startingCard: Rank = 6, cardsPerPlayer: number = 6) {
         // * add all of the cards from the deck
         // * give each player 6 random cards
         // * pull random remaining card for trump
         this.deck = this.createDeck(startingCard)
-        this.hands = this.deal(players)
+        this.hands = this.deal(players, cardsPerPlayer)
         this.trumpCard = this.finalDraw()
         this.trump = this.trumpCard.suit
+        this.drawBelow = cardsPerPlayer
         this.finalTrumpLeft = true
     }
 
@@ -67,12 +69,16 @@ class Deck {
         } else return undefined
     }
 
-    deal(players: number): Card[][] {
+    deal(players: number, cardsPerPlayer: number): Card[][] {
         let cards: Card[][] = []
-        for (let p = 0; p < players; p++) {
-            cards.push([])
-            for(let c = 0; c < 6; c++) {
-                cards[p].push(this.draw())
+        let drawncard: Card | undefined
+        for(let c = 0; c < cardsPerPlayer; c++) {
+            for (let p = 0; p < players; p++) {
+                cards.push([])
+                drawncard = this.draw()
+                if (drawncard) {
+                    cards[p].push(drawncard)
+                }
             }
         }
         this.hands = cards

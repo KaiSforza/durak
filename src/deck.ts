@@ -28,6 +28,7 @@ class Deck {
     hands: Card[][]
     trumpCard: Card
     trump: Suit
+    finalTrumpLeft: boolean
 
     constructor(players: number, startingCard: Rank = 6) {
         // * add all of the cards from the deck
@@ -37,6 +38,7 @@ class Deck {
         this.hands = this.deal(players)
         this.trumpCard = this.finalDraw()
         this.trump = this.trumpCard.suit
+        this.finalTrumpLeft = true
     }
 
     createDeck(startingCard: Rank): Card[] {
@@ -56,8 +58,13 @@ class Deck {
         return Math.floor(Math.random() * end)
     }
 
-    draw(): Card {
-        return this.deck.splice(this.random(this.deck.length), 1)[0]
+    draw(): Card | undefined {
+        if (this.deck.length > 0) {
+            return this.deck.splice(this.random(this.deck.length), 1)[0]
+        } else if (this.finalTrumpLeft) {
+            this.finalTrumpLeft = false
+            return this.trumpCard
+        } else return undefined
     }
 
     deal(players: number): Card[][] {

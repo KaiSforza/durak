@@ -37,7 +37,7 @@ export class Deck {
         // * give each player 6 random cards
         // * pull random remaining card for trump
         let totalDealtCards: number = cardsPerPlayer * players
-        let totalCards: number = 4 * (13 - (startingCard - 1))
+        let totalCards: number = 4 * (13 - (startingCard - 2))
         if (totalCards < (totalDealtCards + 1)) {
             throw new Error("Not enough cards: decrease players, increase total cards, or lower cards per player.")
         }
@@ -65,13 +65,12 @@ export class Deck {
     private deal(players: number, cardsPerPlayer: number): Card[][] {
         let cards: Card[][] = []
         let drawncard: MaybeCard
+        for (let p = 0; p < players; p++) {
+            cards.push([])
+        }
         for(let c = 0; c < cardsPerPlayer; c++) {
             for (let p = 0; p < players; p++) {
-                cards.push([])
-                drawncard = this.draw()
-                if (drawncard) {
-                    cards[p].push(drawncard as Card)
-                }
+                cards[p].push(this.draw() as Card)
             }
         }
         this.hands = cards

@@ -4,7 +4,7 @@
   "description": "Durak card game using electron",
   "main": "dist/main.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage",
     "start": "electron ."
   },
   "repository": {

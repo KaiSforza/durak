@@ -1,31 +1,30 @@
-type Suit = "spades" | "hearts" | "diamonds" | "clubs"
+export type Suit = "spades" | "hearts" | "diamonds" | "clubs"
 
-type Rank = 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14
+export type Rank = 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14
 
-type ordering = number
-            // GT | EQ| LT
+export type ordering = number
 
-interface Card {
+export interface Card {
     rank: Rank
     suit: Suit
 }
 
 type MaybeCard = Card | null
 
-function cardCompare(card1: Card, card2: Card): ordering {
+export function cardCompare(card1: Card, card2: Card): ordering {
     return card1.rank - card2.rank
 }
 
-function cardCompareTrump(card1: Card, card2: Card, trump: Suit = "spades"): ordering {
-    if (card1.suit == trump) {
+export function cardCompareTrump(card1: Card, card2: Card, trump: Suit = "spades"): ordering {
+    if (card1.suit == trump && card2.suit != trump) {
         return 1
-    } else if (card2.suit == trump) {
+    } else if (card2.suit == trump && card1.suit != trump) {
         return -1
     } else return cardCompare(card1, card2)
 }
 
 
-class Deck {
+export class Deck {
     deck: Card[]
     hands: Card[][]
     trumpCard: Card
@@ -50,7 +49,7 @@ class Deck {
         this.finalTrumpLeft = true
     }
 
-    createDeck(startingCard: Rank): Card[] {
+    private createDeck(startingCard: Rank): Card[] {
         let c: Card[] = []
 
         let suits: Suit[] = ["spades", "clubs", "hearts", "diamonds"]
@@ -63,20 +62,7 @@ class Deck {
         return this.deck
     }
 
-    random(end: number): number {
-        return Math.floor(Math.random() * end)
-    }
-
-    draw(): MaybeCard {
-        if (this.deck.length > 0) {
-            return this.deck.splice(this.random(this.deck.length), 1)[0]
-        } else if (this.finalTrumpLeft) {
-            this.finalTrumpLeft = false
-            return this.trumpCard
-        } else return null
-    }
-
-    deal(players: number, cardsPerPlayer: number): Card[][] {
+    private deal(players: number, cardsPerPlayer: number): Card[][] {
         let cards: Card[][] = []
         let drawncard: MaybeCard
         for(let c = 0; c < cardsPerPlayer; c++) {
@@ -91,13 +77,17 @@ class Deck {
         this.hands = cards
         return cards
     }
+
+    private random(end: number): number {
+        return Math.floor(Math.random() * end)
+    }
+
+    draw(): MaybeCard {
+        if (this.deck.length > 0) {
+            return this.deck.splice(this.random(this.deck.length), 1)[0]
+        } else if (this.finalTrumpLeft) {
+            this.finalTrumpLeft = false
+            return this.trumpCard
+        } else return null
+    }
 }
-
-let newdeck = new Deck(4)
-console.log(newdeck.deck)
-console.log(newdeck.hands)
-console.log(newdeck.trumpCard)
-console.log(`Total Cards: ${newdeck.deck.length + newdeck.hands.length * 6 + 1}`)
-
-console.log(cardCompare({rank: 4, suit: "spades"}, {rank: 5, suit: "spades"}))
-console.log(cardCompareTrump({rank: 4, suit: "hearts"}, {rank: 5, suit: "spades"}, "hearts"))

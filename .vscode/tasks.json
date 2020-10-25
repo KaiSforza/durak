@@ -7,7 +7,7 @@
             "problemMatcher": [
                 "$tsc"
             ],
-            "group": { 
+            "group": {
                 "kind": "build",
                 "isDefault": true
             },
@@ -39,6 +39,26 @@
             "label": "npm i",
             "command": "npm",
             "args": ["install"]
+        },
+        {
+            "type": "shell",
+            "group": "test",
+            "label": "electron",
+            "command": "npm",
+            "args": ["start"],
+            "dependsOn": [
+                "npm i"
+            ]
+        },
+        {
+            "type": "shell",
+            "group": "test",
+            "label": "jest",
+            "command": "npm",
+            "args": ["test"],
+            "dependsOn": [
+                "npm i"
+            ]
         },
     ]
 }

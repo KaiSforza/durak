@@ -63,7 +63,7 @@
         {
             "type": "shell",
             "group": "test",
-            "label": "jest",
+            "label": "jestwatch",
             "command": "npm",
             "args": ["run", "testwatch"],
             "dependsOn": [

@@ -23,6 +23,7 @@ See the [wikipedia page](https://en.wikipedia.org/wiki/Durak) for more informati
 ### Quick Guide:
   - Install Node
   - Run the following commands in the project directory:
+
     `npm install`
 
     `npx tsc`

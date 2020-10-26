@@ -1,6 +1,13 @@
 import type * as t from './types'
 
 export class Deck {
+    /**
+     * Sets up the deck for the players
+     *
+     * @param players - the number of players in the game
+     * @param startingCard - what rank of card to start the deck from. default: 6
+     * @param cardsPerPlayer - number of cards for each player. default: 6
+     */
     deck: t.Card[]
     hands: t.Card[][]
     trumpCard: t.Card

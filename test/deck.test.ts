@@ -1,4 +1,4 @@
-import * as deck from "./deck"
+import * as deck from "../src/deck"
 
     // let d = new deck.Deck(2, 6, 6)
 test('compares cards', () => {
@@ -23,6 +23,7 @@ test('card count', () => {
     expect(d1.hands.length).toEqual(4)
     expect(d1.hands[0].length).toEqual(6)
     expect(d1.hands[3].length).toEqual(6)
+    expect(d1.hands[2].length).toEqual(6)
 })
 
 test('not enough cards', () => {

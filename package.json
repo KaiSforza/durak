@@ -5,6 +5,7 @@
   "main": "dist/main.js",
   "scripts": {
     "test": "jest --coverage",
+    "testwatch": "jest --coverage --watch",
     "start": "electron ."
   },
   "repository": {
@@ -33,7 +34,10 @@
     "url": "https://github.com/KaiSforza/durak/issues"
   },
   "homepage": "https://github.com/KaiSforza/durak#readme",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^10.1.4",
+    "typescript": "^4.0.3",
     "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-typescript": "^7.12.1",
@@ -41,8 +45,9 @@
     "babel-jest": "^26.6.1",
     "jest": "^26.6.1"
   },
-  "devDependencies": {
-    "electron": "^10.1.4",
-    "typescript": "^4.0.3"
+  "jest": {
+    "testMatch": [
+      "**/test/**/*.test.[jt]s"
+    ]
   }
 }

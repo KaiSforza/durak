@@ -45,7 +45,7 @@
             "group": "test",
             "label": "electron",
             "command": "npm",
-            "args": ["start"],
+            "args": ["run", "start"],
             "dependsOn": [
                 "npm i"
             ]
@@ -55,7 +55,17 @@
             "group": "test",
             "label": "jest",
             "command": "npm",
-            "args": ["test"],
+            "args": ["run", "test"],
+            "dependsOn": [
+                "npm i"
+            ]
+        },
+        {
+            "type": "shell",
+            "group": "test",
+            "label": "jest",
+            "command": "npm",
+            "args": ["run", "testwatch"],
             "dependsOn": [
                 "npm i"
             ]

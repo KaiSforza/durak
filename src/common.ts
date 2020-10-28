@@ -12,7 +12,11 @@ export function cardCompare(card1: t.Card, card2: t.Card): t.ordering {
      *          negative if the second card (`card2`) is greater,
      *          and `0` if they are equal rank.
      */
-    return card1.rank - card2.rank
+
+    if (card1.suit != card2.suit) {
+        // don't say 1 beats 2 if they're not the same suit
+        return -1
+    } else return card1.rank - card2.rank
 }
 
 export function cardCompareTrump(card1: t.Card, card2: t.Card, trump: t.Suit = "spades"): t.ordering {

@@ -17,8 +17,11 @@
     "cards",
     "electron"
   ],
-  "author": "Alex Giokas",
   "contributors": [
+    {
+      "name": "Alex Giokas",
+      "url": "https://github.com/agiokas"
+    },
     {
       "name": "Kai Giokas",
       "email": "kai@kaictl.me",

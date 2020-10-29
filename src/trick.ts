@@ -48,7 +48,7 @@ export class Trick {
             // get list of cards played
             let availableRanks: t.Rank[] = this.tricks.flat().map(a => a.rank)
             return this.hands[player].filter(
-                a => availableRanks.indexOf(a.rank) > -1
+                a => availableRanks.includes(a.rank)
             )
         }
     }

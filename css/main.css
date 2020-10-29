@@ -1,0 +1,63 @@
+:root {
+    --ussr-red: #CD0000;
+    --ussr-yellow: #FFD900;
+}
+
+body {
+    background-color: var(--ussr-red);
+    user-select: none;
+}
+
+h1 {
+    color: var(--ussr-yellow);
+    margin: 0;
+}
+
+.center {
+    text-align: center;
+}
+
+.russian {
+    font-family: 'Stalinist One', cursive;
+    font-size: 500%;
+}
+
+.russian-translation {
+    font-family: 'Stalinist One', cursive;
+    font-size: 200%;
+}
+
+.title-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.title-box {
+    margin-bottom: 3em;
+}
+
+.title-logo {
+    width: 15%;
+    height: 15%;
+}
+
+.menu-button {
+    margin: 0 auto 30px;
+    padding: 2rem;
+    width: 35%;
+    border-radius: 25px;
+    background-color: #910000;
+    color: var(--ussr-yellow);
+    font-family: 'Stalinist One', cursive;
+    font-size: 200%;
+}
+
+.menu-footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    padding: 0.5rem;
+    width: 100%;
+    font-family: 'Stalinist One', cursive;
+    color: var(--ussr-yellow);
+}

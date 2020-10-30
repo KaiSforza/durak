@@ -25,6 +25,7 @@ jobs:
       uses: actions/setup-node@v2.1.2
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm ci
+    - run: git clean -xdf
+    - run: npm install --package-lock
     - run: tsc --build --verbose
     - run: npm test

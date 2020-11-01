@@ -14,7 +14,7 @@
                 "<node_internals>/**"
             ],
             // "type": "pwa-node",
-            "preLaunchTask": "tsc-build",
+            "preLaunchTask": "npm: build",
             "type": "pwa-node",
             "presentation": {
                 "hidden": false,

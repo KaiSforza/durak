@@ -7,14 +7,59 @@
         {
             "name": "Electron Main",
             // "program": "${workspaceFolder}/dist/main.js",
+            "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
             "program": ".",
             "request": "launch",
-            "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
             "skipFiles": [
                 "<node_internals>/**"
             ],
+            // "type": "pwa-node",
+            "preLaunchTask": "tsc-build",
             "type": "pwa-node",
-            "preLaunchTask": "tsc-build"
-        }
+            "presentation": {
+                "hidden": false,
+                "group": "gui",
+                "order": 3
+            }
+        },
+        {
+            "name": "npm: watch",
+            "type": "pwa-node",
+            "request": "launch",
+            // "env": { "CI": "true" },
+            "runtimeExecutable": "npm",
+            "args": ["run", "watch", "--", "--runInBand", "--no-cache", "--verbose"],
+            "cwd": "${workspaceRoot}",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "runtimeVersion": "12.19.0",
+            "outFiles": ["${workspaceRoot}/dist/**/*.js"],
+            "outputCapture": "std",
+            "presentation": {
+                "hidden": false,
+                "group": "test",
+                "order": 2
+            }
+        },
+        {
+            "name": "npm: test",
+            "type": "pwa-node",
+            "request": "launch",
+            // "env": { "CI": "true" },
+            // "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/jest",
+            "runtimeExecutable": "npm",
+            "args": ["run", "test", "--", "--runInBand", "--no-cache", "--verbose"],
+            "cwd": "${workspaceRoot}",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "runtimeVersion": "12.19.0",
+            "outFiles": ["${workspaceRoot}/dist/**/*.js"],
+            "outputCapture": "std",
+            "presentation": {
+                "hidden": false,
+                "group": "test",
+                "order": 1
+            }
+        },
     ]
 }

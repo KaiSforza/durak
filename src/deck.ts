@@ -30,6 +30,7 @@ export class Deck {
         this.trump = this.trumpCard.suit
         this.drawBelow = cardsPerPlayer
         this.finalTrumpLeft = true
+
     }
 
     private createDeck(startingCard: t.Rank): t.Card[] {

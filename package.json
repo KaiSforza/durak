@@ -4,8 +4,12 @@
   "description": "Durak card game using electron",
   "main": "dist/main.js",
   "scripts": {
+    "build": "tsc --build",
+    "build:watch": "tsc --watch",
+    "clean": "tsc --build --clean",
     "test": "jest --coverage",
-    "testwatch": "jest --watch",
+    "watch": "jest --watch",
+    "prestart": "npm run build",
     "start": "electron ."
   },
   "repository": {
@@ -34,9 +38,10 @@
     "url": "https://github.com/KaiSforza/durak/issues"
   },
   "homepage": "https://github.com/KaiSforza/durak#readme",
-  "dependencies": {},
+  "dependencies": {
+    "electron": "^10.1.4"
+  },
   "devDependencies": {
-    "electron": "^10.1.4",
     "typescript": "^4.0.5",
     "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.12.1",

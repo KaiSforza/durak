@@ -26,8 +26,6 @@ See the [wikipedia page](https://en.wikipedia.org/wiki/Durak) for more informati
 
     `npm install`
 
-    `npx tsc`
-
     `npm start`
 
 ### Testing:

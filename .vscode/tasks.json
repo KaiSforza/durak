@@ -1,74 +1,71 @@
 {
     "version": "2.0.0",
+    "presentation": {
+        "reveal": "silent",
+        "panel": "dedicated",
+        "showReuseMessage": false
+    },
     "tasks": [
-        {
-            "type": "typescript",
-            "tsconfig": "tsconfig.json",
-            "problemMatcher": [
-                "$tsc"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "label": "tsc-build",
-            "dependsOn": [
-                "npm i"
-            ],
-            "runOptions":
-                {
-                    "runOn": "default"
-                }
-        },
-        {
-            "type": "typescript",
-            "tsconfig": "tsconfig.json",
-            "option": "watch",
-            "problemMatcher": [
-                "$tsc-watch"
-            ],
-            "group": "build",
-            "label": "tsc-watch",
-            "dependsOn": [
-                "npm i"
-            ]
-        },
         {
             "type": "shell",
             "group": "build",
-            "label": "npm i",
+            "label": "npm: install",
             "command": "npm",
-            "args": ["install"]
+            "args": [
+                "install"
+            ],
+            "presentation": {
+                "reveal": "silent",
+                "panel": "dedicated",
+                "showReuseMessage": false
+            }
         },
         {
             "type": "shell",
             "group": "test",
             "label": "electron",
             "command": "npm",
-            "args": ["run", "start"],
-            "dependsOn": [
-                "npm i"
-            ]
+            "args": [
+                "run",
+                "start"
+            ],
+            "presentation": {
+                "reveal": "silent",
+                "panel": "dedicated",
+                "showReuseMessage": false
+            }
         },
         {
-            "type": "shell",
-            "group": "test",
-            "label": "jest",
-            "command": "npm",
-            "args": ["run", "test"],
+            "type": "npm",
+            "script": "build:watch",
+            "problemMatcher": [
+                "$tsc-watch"
+            ],
+            "group": "build",
+            "label": "npm: build:watch",
+            "detail": "tsc --watch",
+            "isBackground": true,
             "dependsOn": [
-                "npm i"
-            ]
+                "npm: build"
+            ],
+            "presentation": {
+                "reveal": "silent",
+                "panel": "dedicated",
+                "showReuseMessage": false
+            },
         },
         {
-            "type": "shell",
-            "group": "test",
-            "label": "jestwatch",
-            "command": "npm",
-            "args": ["run", "testwatch"],
-            "dependsOn": [
-                "npm i"
-            ]
-        },
+            "type": "npm",
+            "script": "build",
+            "group": "build",
+            "problemMatcher": [ "$tsc" ],
+            "label": "npm: build",
+            "detail": "tsc --build",
+            "presentation": {
+                "reveal": "silent",
+                "panel": "dedicated",
+                "showReuseMessage": false
+            },
+        }
     ]
 }

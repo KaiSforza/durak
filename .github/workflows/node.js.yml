@@ -27,5 +27,5 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: git clean -xdf
     - run: npm install --package-lock
-    - run: tsc --build --verbose
+    - run: npm build
     - run: npm test

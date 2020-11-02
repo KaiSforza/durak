@@ -33,7 +33,6 @@
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
             "runtimeVersion": "12.19.0",
-            "outFiles": ["${workspaceRoot}/dist/**/*.js"],
             "outputCapture": "std",
             "presentation": {
                 "hidden": false,
@@ -53,7 +52,6 @@
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
             "runtimeVersion": "12.19.0",
-            "outFiles": ["${workspaceRoot}/dist/**/*.js"],
             "outputCapture": "std",
             "presentation": {
                 "hidden": false,

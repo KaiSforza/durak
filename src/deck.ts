@@ -65,7 +65,7 @@ export class Deck {
         return this.deck
     }
 
-    private deal(players: number, cardsPerPlayer: number): t.Card[][] {
+    deal(players: number, cardsPerPlayer: number): t.Card[][] {
         let cards: t.Card[][] = []
         let drawncard: t.MaybeCard
         for (let p = 0; p < players; p++) {

@@ -10,6 +10,23 @@ test('card count', () => {
     expect(d1.hands[2].length).toEqual(6)
 })
 
+test('full deal', () => {
+    let d = new Deck(6) // 6 players means 36 cards of a 36 card deck.
+    expect(d.deck.length).toEqual(0)
+    let DealerHand: Card[] = d.hands[d.hands.length - 1]
+    let LastCard: Card = DealerHand[DealerHand.length - 1]
+    expect(d.trumpCard).toBe(LastCard)
+    expect(d.finalTrumpLeft).toEqual(false)
+})
+
+test('double deal', () => {
+    // this should never happen, but just to test how we handle this
+    let d = new Deck(4)
+    expect(d.deck.length).toEqual(11)
+    let nh: Card[][] = d.deal(d.players, d.cardsPerPlayer)
+    expect(nh.flat().length).toEqual(12)  // 11 in deck + 1 final trump
+})
+
 test('not enough cards', () => {
     try {
         let d2 = new Deck(10, 10)

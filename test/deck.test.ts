@@ -21,7 +21,7 @@ test('not enough cards', () => {
 test('final trump test', () => {
     let d = new Deck(1, 10, 18) // 20 cards, 18 drawn, 1 trump set, 1 left
     let ftrump: Card = d.trumpCard
-    expect(d.draw()).not.toBeNull() // card drawn, should be a card
+    expect(d.draw()).not.toBeUndefined() // card drawn, should be a card
     expect(d.draw()).toBe(ftrump) // card drawn, will be final trump
-    expect(d.draw()).toBeNull() // card draw attempt, fail
+    expect(d.draw()).toBeUndefined() // card draw attempt, fail
 })

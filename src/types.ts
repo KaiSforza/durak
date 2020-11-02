@@ -20,6 +20,6 @@ export type Card = {
 }
 
 // Convenience types
-export type MaybeCard = Card | null
+export type MaybeCard = Card | undefined
 
 export type ordering = number

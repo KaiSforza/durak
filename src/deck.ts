@@ -8,6 +8,11 @@ export class Deck {
      * @param startingCard - what rank of card to start the deck from. default: 6
      * @param cardsPerPlayer - number of cards for each player. default: 6
      */
+    readonly players: number
+    readonly startingCard: t.Rank
+    readonly cardsPerPlayer: number
+
+
     deck: t.Card[]
     hands: t.Card[][]
     trumpCard: t.Card
@@ -19,17 +24,31 @@ export class Deck {
         // * add all of the cards from the deck
         // * give each player 6 random cards
         // * pull random remaining card for trump
+        this.players = players
+        this.startingCard = startingCard
+        this.cardsPerPlayer = cardsPerPlayer
+
         let totalDealtCards: number = cardsPerPlayer * players
         let totalCards: number = 4 * (13 - (startingCard - 2))
-        if (totalCards < (totalDealtCards + 1)) {
+        if (totalCards < totalDealtCards) {
             throw new Error("Not enough cards: decrease players, increase total cards, or lower cards per player.")
         }
+
         this.deck = this.createDeck(startingCard)
         this.hands = this.deal(players, cardsPerPlayer)
-        this.trumpCard = this.draw() as t.Card  // this should never be undefined, but...
+        let tc: t.MaybeCard = this.draw()
+        if (tc !== undefined) {
+            this.trumpCard = tc
+            this.finalTrumpLeft = true
+        } else {
+            // If we have, say, 6 players in a normal deck, the final dealt card is dealt
+            // this will be the dealers last card.
+            let dealerHand = this.hands[players - 1]
+            this.trumpCard = dealerHand[dealerHand.length - 1]
+            this.finalTrumpLeft = false
+        }
         this.trump = this.trumpCard.suit
         this.drawBelow = cardsPerPlayer
-        this.finalTrumpLeft = true
 
     }
 
@@ -54,7 +73,10 @@ export class Deck {
         }
         for(let c = 0; c < cardsPerPlayer; c++) {
             for (let p = 0; p < players; p++) {
-                cards[p].push(this.draw() as t.Card)
+                let curc: t.MaybeCard = this.draw()
+                if (curc !== undefined) {
+                    cards[p].push(curc)
+                }
             }
         }
         this.hands = cards
@@ -71,6 +93,6 @@ export class Deck {
         } else if (this.finalTrumpLeft) {
             this.finalTrumpLeft = false
             return this.trumpCard
-        } else return null
+        } else return undefined
     }
 }

@@ -14,7 +14,7 @@ export type Rank = 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14
  * @param Rank - the card number or face (2-14)
  * @param Suit - the card suit
  */
-export interface Card {
+export type Card = {
     readonly rank: Rank
     readonly suit: Suit
 }

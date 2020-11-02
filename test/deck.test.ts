@@ -3,7 +3,7 @@ import type { Card } from "../src/types"
 
 test('card count', () => {
     let d1 = new Deck(4)
-    expect(d1.deck.length).toEqual(11)
+    expect(d1.deck.length).toEqual(11)  // 36 - 24 = 12, minus one for final trump
     expect(d1.hands.length).toEqual(4)
     expect(d1.hands[0].length).toEqual(6)
     expect(d1.hands[3].length).toEqual(6)

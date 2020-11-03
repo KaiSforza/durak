@@ -34,6 +34,7 @@
             "internalConsoleOptions": "neverOpen",
             "runtimeVersion": "12.19.0",
             "outputCapture": "std",
+            "preLaunchTask": "${defaultBuildTask}",
             "presentation": {
                 "hidden": false,
                 "group": "test",
@@ -53,6 +54,7 @@
             "internalConsoleOptions": "neverOpen",
             "runtimeVersion": "12.19.0",
             "outputCapture": "std",
+            "preLaunchTask": "${defaultBuildTask}",
             "presentation": {
                 "hidden": false,
                 "group": "test",

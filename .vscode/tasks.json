@@ -10,10 +10,23 @@
             "type": "shell",
             "group": "build",
             "label": "npm: install",
-            "command": "npm",
-            "args": [
-                "install"
-            ],
+            "detail": "conditional npm install",
+            "problemMatcher": [],
+            "windows": {
+                "command": "powershell",
+                "args": [
+                    "${workspaceFolder}/.vscode/bin/install.ps1",
+                    "-root",
+                    "${workspaceFolder}"
+                ],
+            },
+            "linux": {
+                "command": "bash",
+                "args": [
+                    "${workspaceFolder}/.vscode/bin/install.sh",
+                    "${workspaceFolder}"
+                ]
+            },
             "presentation": {
                 "reveal": "silent",
                 "panel": "dedicated",
@@ -57,10 +70,16 @@
         {
             "type": "npm",
             "script": "build",
-            "group": "build",
+            "group": {
+                "kind": "build",
+                "isDefault": true,
+            },
             "problemMatcher": [ "$tsc" ],
             "label": "npm: build",
             "detail": "tsc --build",
+            "dependsOn": [
+                "npm: install"
+            ],
             "presentation": {
                 "reveal": "silent",
                 "panel": "dedicated",

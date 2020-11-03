@@ -13,11 +13,11 @@
             "detail": "conditional npm install",
             "problemMatcher": [],
             "windows": {
-                "command": "powershell",
+                "command": "pwsh",
                 "args": [
+                    "-ExecutionPolicy", "Bypass",
                     "${workspaceFolder}/.vscode/bin/install.ps1",
-                    "-root",
-                    "${workspaceFolder}"
+                    "-root", "${workspaceFolder}"
                 ],
             },
             "linux": {

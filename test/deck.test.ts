@@ -11,9 +11,10 @@ test('card count', () => {
 })
 
 test('full deal', () => {
-    let d = new Deck(6) // 6 players means 36 cards of a 36 card deck.
+    let d = new Deck(6, 6, 6) // 6 players means 36 cards of a 36 card deck.
     expect(d.deck.length).toEqual(0)
     let DealerHand: Card[] = d.hands[d.hands.length - 1]
+    expect(DealerHand.length).toEqual(6)
     let LastCard: Card = DealerHand[DealerHand.length - 1]
     expect(d.trumpCard).toBe(LastCard)
     expect(d.finalTrumpLeft).toEqual(false)

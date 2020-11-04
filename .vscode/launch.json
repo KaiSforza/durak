@@ -32,7 +32,7 @@
             "cwd": "${workspaceRoot}",
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
-            "runtimeVersion": "12.19.0",
+            // "runtimeVersion": "12.19.0",
             "outputCapture": "std",
             "preLaunchTask": "${defaultBuildTask}",
             "presentation": {
@@ -52,7 +52,7 @@
             "cwd": "${workspaceRoot}",
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
-            "runtimeVersion": "12.19.0",
+            // "runtimeVersion": "12.19.0",
             "outputCapture": "std",
             "preLaunchTask": "${defaultBuildTask}",
             "presentation": {

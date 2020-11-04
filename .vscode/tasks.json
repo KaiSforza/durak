@@ -21,9 +21,8 @@
                 ],
             },
             "linux": {
-                "command": "bash",
+                "command": "${workspaceFolder}/.vscode/bin/install.sh",
                 "args": [
-                    "${workspaceFolder}/.vscode/bin/install.sh",
                     "${workspaceFolder}"
                 ]
             },

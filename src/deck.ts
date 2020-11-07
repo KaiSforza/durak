@@ -96,3 +96,19 @@ export class Deck {
         } else return undefined
     }
 }
+
+export const deal = (deck: t.Card[], players: number, cardsPerPlayer: number) => {
+    undefined
+}
+
+export const createDeck = (startingCard: t.Rank): t.Card[] => {
+    let c: t.Card[] = []
+
+    let suits: t.Suit[] = ["spades", "clubs", "hearts", "diamonds"]
+    for (let r = startingCard; r <= 14; r++) {
+        for (let s of suits) {
+            c.push({rank: r, suit: s})
+        }
+    }
+    return c
+}

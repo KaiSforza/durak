@@ -96,7 +96,7 @@ export class Deck {
         } else return undefined
     }
 }
-
+/* 
 export const deal = (deck: t.Card[], players: number, cardsPerPlayer: number) => {
     undefined
 }
@@ -112,3 +112,4 @@ export const createDeck = (startingCard: t.Rank): t.Card[] => {
     }
     return c
 }
+*/

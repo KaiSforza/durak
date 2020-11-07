@@ -1,5 +1,5 @@
 import type * as t from './types'
-import { fromCompare, Ord } from 'fp-ts/lib/Ord'
+import { Ord } from 'fp-ts/lib/Ord'
 
 /**
  * @param card1 - the first card
@@ -21,18 +21,15 @@ export const cardCompare = (card1: t.Card, card2: t.Card, trump?: t.Suit): t.ord
             return -1
         }
     }
-    return cardOrd.compare(card1, card2)
+    return ordCard.compare(card1, card2)
 }
 
-export const cardOrd = fromCompare((a: t.Card, b: t.Card) =>
-    a.rank < b.rank ? -1 : a.rank > b.rank ? 1 : 0
-)
-
-export function min<A>(O: Ord<A>): (x: A, y: A) => A {
-    return (x, y) => (O.compare(x, y) === 1 ? y : x)
+export const ordCard: Ord<t.Card> = {
+    equals: (x, y) => x === y,
+    compare: (x, y) => ordRank.compare(x.rank, y.rank)
 }
 
-export function max<A>(O: Ord<A>): (x: A, y: A) => A {
-    return (x, y) => (O.compare(x, y) === 1 ? x : y)
+export const ordRank: Ord<t.Rank> = {
+    equals: (x, y) => x === y,
+    compare: (x, y) => x < y ? -1 : x > y ? 1 : 0
 }
-

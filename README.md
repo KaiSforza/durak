@@ -3,6 +3,13 @@
 [![Actions Status](https://github.com/KaiSforza/durak/workflows/Node.js%20CI/badge.svg)](https://github.com/KaiSforza/durak/actions?query=workflow%3A"Node.js+CI")
 [![Actions Status](https://github.com/KaiSforza/durak/workflows/CodeQL/badge.svg)](https://github.com/KaiSforza/durak/actions?query=workflow%3ACodeQL)
 
+[![pipeline status](https://gitlab.kaictl.me/kaictl/durak/badges/master/pipeline.svg)](https://gitlab.kaictl.me/kaictl/durak/-/commits/master)
+[![coverage report](https://gitlab.kaictl.me/kaictl/durak/badges/master/coverage.svg)](https://gitlab.kaictl.me/kaictl/durak/-/commits/master)
+
+[![pipeline status](https://gitlab.com/KaiSforza/durak/badges/master/pipeline.svg)](https://gitlab.com/KaiSforza/durak/-/commits/master)
+[![coverage report](https://gitlab.com/KaiSforza/durak/badges/master/coverage.svg)](https://gitlab.com/KaiSforza/durak/-/commits/master)
+
+
 
 This project is a playable version of the card game, Durak ('fool' in Russian).
 

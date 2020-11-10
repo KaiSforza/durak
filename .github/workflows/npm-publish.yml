@@ -17,7 +17,7 @@ jobs:
           node-version: 12
       - run: git clean -xdf
       - run: npm install --package-lock
-      - run: npm test
+      - run: npm run test
 
   publish-gpr:
     needs: build

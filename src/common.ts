@@ -1,5 +1,6 @@
 import type * as t from './types'
 import { Ord } from 'fp-ts/lib/Ord'
+import { Eq } from 'fp-ts/lib/Eq'
 
 /**
  * @param card1 - the first card
@@ -26,10 +27,14 @@ export const cardCompare = (card1: t.Card, card2: t.Card, trump?: t.Suit): t.ord
 
 export const ordCard: Ord<t.Card> = {
     equals: (x, y) => x === y,
-    compare: (x, y) => ordRank.compare(x.rank, y.rank)
+    compare: (x, y) => eqSuit.equals(x.suit, y.suit) ? ordRank.compare(x.rank, y.rank) : -1
 }
 
 export const ordRank: Ord<t.Rank> = {
     equals: (x, y) => x === y,
     compare: (x, y) => x < y ? -1 : x > y ? 1 : 0
+}
+
+export const eqSuit: Eq<t.Suit> = {
+    equals: (x, y) => x === y
 }

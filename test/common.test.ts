@@ -10,7 +10,8 @@ suite('compare cards types', function() {
     test('functional card comparison', () => {
         strictEqual(ordCard.compare(c1, c2), -1)
         strictEqual(ordCard.compare(c1, c1), 0)
-        strictEqual(ordCard.compare(c2, c1), 1)
+        strictEqual(ordCard.compare(c2, c1), -1)
+        strictEqual(ordCard.compare(c3, c1), 1)
     })
     test('functional card equals', () => {
         strictEqual(ordCard.equals(c1, c1), true)

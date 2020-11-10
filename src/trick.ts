@@ -10,10 +10,11 @@ import * as c from './common'
  * @param defender - the defenders hand
  */
 export class Trick {
+    readonly attacker: number
+    readonly defender: number
+
     deck: d.Deck
     tricks: t.Card[][]
-    attacker: number
-    defender: number
     trump: t.Suit
 
     constructor(deck: d.Deck, a: number, d: number) {
@@ -43,12 +44,15 @@ export class Trick {
         this.tricks[this.tricks.length - 1].push(ca)
     }
 
-    /*
-    trick() {
-        while (this.deck.hands[this.defender].length >= 1 && this.deck.hands[this.attacker].length >= 1) {
-            let pc = this.playableCards()
-
-        }
+    pickUpCards(): t.Card[] {
+        let newDefHand = this.deck.hands[this.defender].concat(this.tricks.flat())
+        this.deck.hands[this.defender] = newDefHand
+        return newDefHand
     }
-    */
+
+    discardCards(): t.Card[] {
+        let newDiscard = this.deck.discard.concat(this.tricks.flat())
+        this.deck.discard = newDiscard
+        return newDiscard
+    }
 }

@@ -55,7 +55,7 @@ suite('tricks', function() {
     test('attack part 2 electric boogaloo', function() {
         let trick = new tr.Trick(deck, 0, 1)
         let played: t.Card[] = [{rank: 9, suit: 'diamonds'}, {rank: 10, suit: 'diamonds'}]
-        let defaultHands: t.Card[][] = [
+        let defaultH: t.Card[][] = [
             [
                 {rank: 10, suit: 'spades'},
                 {rank: 11, suit: 'spades'},
@@ -66,7 +66,7 @@ suite('tricks', function() {
                 {rank: 12, suit: 'hearts'},
             ]
         ]
-        deck.hands = defaultHands
+        deck.hands = defaultH
         trick.tricks = [played] // 9 of diamonds
         let playable = [
             {rank: 10, suit: 'spades'},
@@ -82,4 +82,42 @@ suite('tricks', function() {
         deepStrictEqual(trick.tricks[0][0], p)
     })
 
+    test('pick up tricks', function() {
+        let trick = new tr.Trick(deck, 0, 1)
+        trick.tricks = [[defaultHands[0][0]]] // 9 of diamonds
+        let pu = trick.pickUpCards()
+        let defHand = [
+            {rank: 9, suit: 'spades'},
+            {rank: 10, suit: 'diamonds'},
+            {rank: 12, suit: 'spades'},
+            {rank: 12, suit: 'hearts'},
+            defaultHands[0][0],
+        ]
+        deepStrictEqual(pu, defHand)
+        deepStrictEqual(trick.deck.hands[trick.defender], defHand)
+    })
+    test('discard tricks', function() {
+        let trick = new tr.Trick(deck, 0, 1)
+        trick.tricks = [[defaultHands[0][0], defaultHands[1][1]]] // 9 of diamonds and 10 of diamonds
+        let dc = trick.discardCards()
+        let hands: t.Card[][] = [[
+            {rank: 9, suit: 'spades'},
+            {rank: 12, suit: 'spades'},
+            {rank: 12, suit: 'hearts'},
+        ], [
+            {rank: 10, suit: 'spades'},
+            {rank: 11, suit: 'spades'},
+            {rank: 10, suit: 'clubs'}
+        ]]
+        trick.deck.hands = hands
+
+        let defHand = hands[1]
+        let atkHand = hands[0]
+
+        let discardedCards = [defaultHands[0][0], defaultHands[1][1]]
+        deepStrictEqual(dc, discardedCards)
+        deepStrictEqual(trick.deck.discard, discardedCards)
+        deepStrictEqual(trick.deck.hands[trick.defender], defHand)
+        deepStrictEqual(trick.deck.hands[trick.attacker], atkHand)
+    })
 })

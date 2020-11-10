@@ -15,6 +15,7 @@ export class Deck {
 
     deck: t.Card[]
     hands: t.Card[][]
+    discard: t.Card[]
     trumpCard: t.Card
     trump: t.Suit
     drawBelow: number
@@ -27,6 +28,7 @@ export class Deck {
         this.players = players
         this.startingCard = startingCard
         this.cardsPerPlayer = cardsPerPlayer
+        this.discard = []
 
         let totalDealtCards: number = cardsPerPlayer * players
         let totalCards: number = 4 * (13 - (startingCard - 2))
@@ -52,7 +54,7 @@ export class Deck {
 
     }
 
-    private createDeck(startingCard: t.Rank): t.Card[] {
+    createDeck(startingCard: t.Rank): t.Card[] {
         let c: t.Card[] = []
 
         let suits: t.Suit[] = ["spades", "clubs", "hearts", "diamonds"]

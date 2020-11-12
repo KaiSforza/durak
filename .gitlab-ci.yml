@@ -2,6 +2,7 @@ cache:
   paths:
     - node_modules/
     - dist/
+  key: "$CI_PIPELINE_ID"
 
 stages:
   - build

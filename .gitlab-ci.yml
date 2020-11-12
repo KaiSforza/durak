@@ -6,40 +6,37 @@ cache:
 stages:
   - build
   - test
-  - deploy
+  - lint
 
-.build:
+build:
+  image: node:alpine
   stage: build
   script:
     - npm install
     - npm run build
 
-.test:
+test:
+  image: node:alpine
+  needs:
+    - build
   stage: test
   script:
     - npm install --no-save mocha-junit-reporter
-    - npm run test --reporter mocha-junit-reporter
+    - npm run test -- --reporter mocha-junit-reporter
   artifacts:
     reports:
       junit:
       - test-results.xml
 
-build:
-  image: node:alpine
-  extends: .build
-
-test:
-  extends: .test
+lint:
   image: node:alpine
   needs:
     - build
-
-build:12:
-  image: node:12-alpine
-  extends: .build
-
-test:12:
-  extends: .test
-  image: node:12-alpine
-  needs:
-    - build:12
+  stage: lint
+  script:
+    - npm install
+    - npm run lint -- --format junit --output-file test-lint.xml
+  artifacts:
+    reports:
+      junit:
+      - test-lint.xml

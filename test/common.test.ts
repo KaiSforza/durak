@@ -3,10 +3,10 @@ import type * as t from '../src/types'
 import { cardCompare, ordCard, ordRank, } from '../src/common'
 
 suite('compare cards types', function() {
-    let c1: t.Card = {rank: 2, suit: "hearts"}
-    let c2: t.Card = {rank: 6, suit: "clubs"}
-    let c3: t.Card = {rank: 3, suit: "hearts"}
-    let c4: t.Card = {rank: 2, suit: "spades"}
+    const c1: t.Card = {rank: 2, suit: "hearts"}
+    const c2: t.Card = {rank: 6, suit: "clubs"}
+    const c3: t.Card = {rank: 3, suit: "hearts"}
+    const c4: t.Card = {rank: 2, suit: "spades"}
     test('functional card comparison', () => {
         strictEqual(ordCard.compare(c1, c2), -1)
         strictEqual(ordCard.compare(c1, c1), 0)

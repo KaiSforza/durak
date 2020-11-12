@@ -10,6 +10,7 @@
     "rebuild": "npm run clean && npm run build",
     "test": "nyc --reporter=text mocha",
     "watch": "mocha --watch",
+    "lint": "eslint --ext .ts --ext .tsx src/ test/",
     "prestart": "npm run build",
     "start": "electron ./dist/main.js"
   },
@@ -45,14 +46,17 @@
     "react-dom": "^17.0.1"
   },
   "devDependencies": {
+    "@types/mocha": "^8.0.3",
     "@types/react": "^16.9.56",
     "@types/react-dom": "^16.9.9",
-    "@types/mocha": "^8.0.3",
+    "@typescript-eslint/eslint-plugin": "^4.7.0",
+    "@typescript-eslint/parser": "^4.7.0",
     "clean-webpack-plugin": "^3.0.0",
+    "eslint": "^7.13.0",
     "fp-ts": "^2.8.5",
     "mocha": "^8.2.1",
-    "ts-loader": "^8.0.11",
     "nyc": "^15.1.0",
+    "ts-loader": "^8.0.11",
     "ts-node": "^9.0.0",
     "typescript": "^4.0.5",
     "webpack": "^5.4.0",
@@ -63,7 +67,9 @@
     "test": "./test"
   },
   "mocha": {
-    "extension": ["ts"],
+    "extension": [
+      "ts"
+    ],
     "spec": "test/**/*.test.ts",
     "require": "ts-node/register",
     "ui": "tdd"

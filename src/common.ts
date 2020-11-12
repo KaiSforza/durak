@@ -1,6 +1,6 @@
-import type * as t from './types'
-import { Ord } from 'fp-ts/lib/Ord'
-import { Eq } from 'fp-ts/lib/Eq'
+import type * as t from "./types"
+import { Ord } from "fp-ts/lib/Ord"
+import { Eq } from "fp-ts/lib/Eq"
 
 /**
  * @param card1 - the first card

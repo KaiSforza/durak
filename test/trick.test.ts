@@ -1,11 +1,11 @@
-import { strictEqual, deepStrictEqual } from "assert"
+import { deepStrictEqual } from "assert"
 import type * as t from '../src/types'
 import * as tr from '../src/trick'
 import {Deck} from '../src/deck'
 
 suite('tricks', function() {
-    let deck = new Deck(2)
-    let defaultDeck: t.Card[] = [
+    const deck = new Deck(2)
+    const defaultDeck: t.Card[] = [
         {rank: 6, suit: 'spades'},
         {rank: 7, suit: 'spades'},
         {rank: 8, suit: 'spades'},
@@ -16,9 +16,9 @@ suite('tricks', function() {
         {rank: 7, suit: 'diamonds'},
         {rank: 8, suit: 'diamonds'},
     ]
-    let defaultTrump: t.Card = {rank: 14, suit: "spades"}
-    let defaultT: t.Suit = defaultTrump.suit
-    let defaultHands: t.Card[][] = [
+    const defaultTrump: t.Card = {rank: 14, suit: "spades"}
+    const defaultT: t.Suit = defaultTrump.suit
+    const defaultHands: t.Card[][] = [
         [
             {rank: 9, suit: 'diamonds'},
             {rank: 10, suit: 'spades'},
@@ -38,24 +38,24 @@ suite('tricks', function() {
         deck.trump = defaultT
     })
     test('no cards played', function() {
-        let trick = new tr.Trick(deck, 0, 1)
+        const trick = new tr.Trick(deck, 0, 1)
         deepStrictEqual(trick.playableCards()[1], defaultHands[0]) 
     })
     test('one card played', function() {
-        let trick = new tr.Trick(deck, 0, 1)
+        const trick = new tr.Trick(deck, 0, 1)
         trick.tricks = [[defaultHands[0][0]]] // 9 of diamonds
-        let playable = [
+        const playable = [
             {rank: 9, suit: 'spades'},
             {rank: 10, suit: 'diamonds'},
             {rank: 12, suit: 'spades'},
         ]
-        let p = trick.playableCards()[1]
+        const p = trick.playableCards()[1]
         deepStrictEqual(p, playable)
     })
     test('attack part 2 electric boogaloo', function() {
-        let trick = new tr.Trick(deck, 0, 1)
-        let played: t.Card[] = [{rank: 9, suit: 'diamonds'}, {rank: 10, suit: 'diamonds'}]
-        let defaultH: t.Card[][] = [
+        const trick = new tr.Trick(deck, 0, 1)
+        const played: t.Card[] = [{rank: 9, suit: 'diamonds'}, {rank: 10, suit: 'diamonds'}]
+        const defaultH: t.Card[][] = [
             [
                 {rank: 10, suit: 'spades'},
                 {rank: 11, suit: 'spades'},
@@ -68,25 +68,25 @@ suite('tricks', function() {
         ]
         deck.hands = defaultH
         trick.tricks = [played] // 9 of diamonds
-        let playable = [
+        const playable = [
             {rank: 10, suit: 'spades'},
             {rank: 10, suit: 'clubs'}
         ]
-        let p = trick.playableCards()[1]
+        const p = trick.playableCards()[1]
         deepStrictEqual(p, playable)
     })
     test('play card', function() {
-        let trick = new tr.Trick(deck, 0, 1)
-        let p: t.Card = {rank: 10, suit: 'spades'}
+        const trick = new tr.Trick(deck, 0, 1)
+        const p: t.Card = {rank: 10, suit: 'spades'}
         trick.playCard(trick.attacker, p)
         deepStrictEqual(trick.tricks[0][0], p)
     })
 
     test('pick up tricks', function() {
-        let trick = new tr.Trick(deck, 0, 1)
+        const trick = new tr.Trick(deck, 0, 1)
         trick.tricks = [[defaultHands[0][0]]] // 9 of diamonds
-        let pu = trick.pickUpCards()
-        let defHand = [
+        const pu = trick.pickUpCards()
+        const defHand = [
             {rank: 9, suit: 'spades'},
             {rank: 10, suit: 'diamonds'},
             {rank: 12, suit: 'spades'},
@@ -97,10 +97,10 @@ suite('tricks', function() {
         deepStrictEqual(trick.deck.hands[trick.defender], defHand)
     })
     test('discard tricks', function() {
-        let trick = new tr.Trick(deck, 0, 1)
+        const trick = new tr.Trick(deck, 0, 1)
         trick.tricks = [[defaultHands[0][0], defaultHands[1][1]]] // 9 of diamonds and 10 of diamonds
-        let dc = trick.discardCards()
-        let hands: t.Card[][] = [[
+        const dc = trick.discardCards()
+        const hands: t.Card[][] = [[
             {rank: 9, suit: 'spades'},
             {rank: 12, suit: 'spades'},
             {rank: 12, suit: 'hearts'},
@@ -111,10 +111,10 @@ suite('tricks', function() {
         ]]
         trick.deck.hands = hands
 
-        let defHand = hands[1]
-        let atkHand = hands[0]
+        const defHand = hands[1]
+        const atkHand = hands[0]
 
-        let discardedCards = [defaultHands[0][0], defaultHands[1][1]]
+        const discardedCards = [defaultHands[0][0], defaultHands[1][1]]
         deepStrictEqual(dc, discardedCards)
         deepStrictEqual(trick.deck.discard, discardedCards)
         deepStrictEqual(trick.deck.hands[trick.defender], defHand)

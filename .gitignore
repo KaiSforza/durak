@@ -5,3 +5,4 @@ coverage/
 package-lock.json
 *.tsbuildinfo
 .nyc_output/
+test-results.xml

@@ -1,0 +1,45 @@
+cache:
+  paths:
+    - node_modules/
+    - dist/
+
+stages:
+  - build
+  - test
+  - deploy
+
+.build:
+  stage: build
+  script:
+    - npm install
+    - npm run build
+
+.test:
+  stage: test
+  script:
+    - npm install --no-save mocha-junit-reporter
+    - npm run test --reporter mocha-junit-reporter
+  artifacts:
+    reports:
+      junit:
+      - test-results.xml
+
+build:
+  image: node:alpine
+  extends: .build
+
+test:
+  extends: .test
+  image: node:alpine
+  needs:
+    - build
+
+build:12:
+  image: node:12-alpine
+  extends: .build
+
+test:12:
+  extends: .test
+  image: node:12-alpine
+  needs:
+    - build:12

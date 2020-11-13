@@ -45,6 +45,8 @@ lint:
 
 deploy:
   stage: deploy
+  only:
+    - master
   needs:
     - lint
     - test

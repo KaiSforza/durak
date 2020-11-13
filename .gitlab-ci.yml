@@ -44,6 +44,7 @@ lint:
       - test-lint.xml
 
 deploy:
+  image: node:alpine
   stage: deploy
   only:
     - master

@@ -5,6 +5,7 @@
   "main": "dist/main.js",
   "scripts": {
     "build": "webpack --config ./webpack.config.js",
+    "build:tsc": "tsc --build --verbose",
     "build:watch": "webpack --config ./webpack.config.js --watch",
     "clean": "tsc --build --clean",
     "rebuild": "npm run clean && npm run build",

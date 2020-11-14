@@ -1,6 +1,6 @@
 {
   "name": "durak",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Durak card game using electron",
   "main": "dist/main.js",
   "scripts": {

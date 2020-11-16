@@ -51,7 +51,7 @@
             "type": "npm",
             "script": "build:watch",
             "problemMatcher": [
-                "$tsc-watch"
+                "$ts-webpack"
             ],
             "group": "build",
             "label": "npm: build:watch",
@@ -73,7 +73,7 @@
                 "kind": "build",
                 "isDefault": true,
             },
-            "problemMatcher": [ "$tsc" ],
+            "problemMatcher": [ "$ts-webpack" ],
             "label": "npm: build",
             "detail": "tsc --build",
             "dependsOn": [

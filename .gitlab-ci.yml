@@ -1,5 +1,6 @@
 cache:
   paths:
+    - package-lock.json
     - node_modules/
     - dist/
   key: "$CI_PIPELINE_ID"
@@ -24,7 +25,7 @@ test:
   stage: test
   script:
     - npm install --no-save mocha-junit-reporter
-    - npm run test -- --reporter mocha-junit-reporter
+    - npm run test:junit
   artifacts:
     reports:
       junit:
@@ -37,7 +38,7 @@ lint:
   stage: lint
   script:
     - npm install
-    - npm run lint -- --format junit --output-file test-lint.xml
+    - npm run lint:junit
   artifacts:
     reports:
       junit:

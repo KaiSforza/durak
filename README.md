@@ -38,5 +38,5 @@ Tests are stored in `test/`, named after the files they are testing, ending in `
     `npm test`
 
   - However, you usually want to watch the files while working. You can use:  
-    `npm run testwatch`  
+    `npm run test:watch`  
     to re-run the tests every time you make changes.

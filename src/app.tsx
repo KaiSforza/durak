@@ -11,12 +11,12 @@ class MainMenu extends React.Component {
     MainMenuHeader() {
         return (
             <div id="main-menu-header" className="title-container">
-                <img src="images/hammer_and_sickle.png" alt="USSR logo" className="title-logo" />
+                <img src="../images/hammer_and_sickle.png" alt="USSR logo" className="title-logo" />
                 <div id="game-title" className="title-box">
                     <h1 className="center russian">дурак</h1>
                     <h1 className="center russian-translation">( Durak )</h1>
                 </div>
-                <img src="images/hammer_and_sickle.png" alt="USSR logo" className="title-logo" />
+                <img src="../images/hammer_and_sickle.png" alt="USSR logo" className="title-logo" />
             </div>
         )
     }

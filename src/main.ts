@@ -12,7 +12,7 @@ function createWindow() {
         }     
     })
 
-    mainWindow.loadFile('index.html')
+    mainWindow.loadFile('dist/index.html')
 }
 
 app.whenReady().then(createWindow)

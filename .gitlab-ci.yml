@@ -65,6 +65,10 @@ deploy:
 license_scanning:
   needs:
     - build
+    
+eslint-sast:
+  variables:
+    SAST_EXCLUDED_PATHS: node_modules, test, spec, tests, tmp
 
 include:
   - template: Security/Dependency-Scanning.gitlab-ci.yml
